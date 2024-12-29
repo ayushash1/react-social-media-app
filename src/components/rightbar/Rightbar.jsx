@@ -3,7 +3,7 @@
 import "./rightbar.css";
 import { Users } from "../../dummyData";
 import Online from "../online/Online";
-function Rightbar({ profile }) {
+function Rightbar({ user }) {
   const HomeRightbar = () => {
     const PF = import.meta.env.VITE_PUBLIC_FOLDER;
     return (
@@ -34,15 +34,15 @@ function Rightbar({ profile }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">New York</span>
+            <span className="rightbarInfoValue">{user?.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Madrid</span>
+            <span className="rightbarInfoValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">Single</span>
+            <span className="rightbarInfoValue">{user?.relationship === 1 ? "Single" : user.relationship === 2 ? "In Relationship" : "-" }</span>
           </div>
         </div>
         <h4 className="rightbarTitle">Friends</h4>
@@ -103,7 +103,7 @@ function Rightbar({ profile }) {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   );

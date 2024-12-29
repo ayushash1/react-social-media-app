@@ -16,7 +16,7 @@ const Feed = ({ username }) => {
       try {
         const res = username
           ? await axios.get("/api/posts/profile/" + username)   // that damn leading slash wasted my 2 hours 💀
-          : await axios.get("/api/posts/timeline/676862908af58e3480ae3014");
+          : await axios.get("api/posts/timeline/676862908af58e3480ae3014");
         console.log(res.data);
         setPosts(res.data);
       } catch (err) {
